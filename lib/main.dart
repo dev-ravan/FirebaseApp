@@ -1,3 +1,4 @@
+import 'package:firebase_app/Pages/Home/controller/home.dart';
 import 'package:firebase_app/Utils/exports.dart';
 import 'package:firebase_app/Utils/splash.dart';
 import 'package:firebase_app/firebase_options.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<SignUpProvider>(
             create: (context) => SignUpProvider()),
         ChangeNotifierProvider<ProfileProvider>(
-            create: (_) => ProfileProvider())
+            create: (_) => ProfileProvider()),
+        ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider())
       ],
       child: MaterialApp(
         title: 'Firebase App',

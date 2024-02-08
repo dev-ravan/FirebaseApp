@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'theme.dart';
 
+final myTexts = MyTexts();
+
 class MyTexts {
   Widget LogoText({required double size}) {
     return Text("FIREBASE",

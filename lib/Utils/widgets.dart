@@ -1,4 +1,5 @@
 import 'package:firebase_app/Utils/exports.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 final myWidgets = MyWidgets();
 
@@ -58,4 +59,15 @@ class MyWidgets {
           ],
         ),
       );
+
+  Future toastMsg({required dynamic msg, Color? color}) {
+    return Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: color ?? Palette.red,
+        textColor: Palette.white,
+        fontSize: 16);
+  }
 }

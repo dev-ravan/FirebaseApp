@@ -3,6 +3,8 @@
 import 'package:firebase_app/Utils/exports.dart';
 
 class SignUpProvider extends ChangeNotifier {
+  AuthFireServices authService = AuthFireServices();
+
   // Global form key
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -64,11 +66,16 @@ class SignUpProvider extends ChangeNotifier {
   }
 
   // Submit the login form
-  void submitForm() {
+  void submitForm(BuildContext context) {
     if (formKey.currentState!.validate()) {
-    } else {
-      print("Sign up failed...");
+      setLoading(true);
+      authService.signUp(
+          email: emailController.text.trim(),
+          password: confirmPasswordController.text.trim());
+      resetForm();
+      setLoading(false);
     }
+    notifyListeners();
   }
 
   // Reset Login Form

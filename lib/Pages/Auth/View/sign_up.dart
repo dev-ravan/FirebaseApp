@@ -1,4 +1,4 @@
-import '../../../Utils/exports.dart';
+import '../../../../Utils/exports.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -64,7 +64,7 @@ class SignUp extends StatelessWidget {
               MyButtons().customButton(
                   context: context,
                   title: provider.title,
-                  onTap: () => provider.submitForm()),
+                  onTap: () => provider.submitForm(context)),
               gap20,
 
               Row(

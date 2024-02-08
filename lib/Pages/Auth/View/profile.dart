@@ -1,4 +1,4 @@
-import '../../../Utils/exports.dart';
+import '../../../../Utils/exports.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});

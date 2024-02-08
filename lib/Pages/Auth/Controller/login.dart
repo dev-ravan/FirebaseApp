@@ -1,7 +1,8 @@
-import 'package:firebase_app/Auth/View/profile.dart';
 import 'package:firebase_app/Utils/exports.dart';
 
 class LoginProvider extends ChangeNotifier {
+  AuthFireServices authService = AuthFireServices();
+
   // Global form key
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -37,7 +38,7 @@ class LoginProvider extends ChangeNotifier {
   // New Password Validation
   String? passwordValidation(String? val) => val!.isEmpty
       ? password.errorMsg
-      : val.length <= 6
+      : val.length <= 5
           ? "Password should at least 6 digits"
           : null;
 
@@ -45,8 +46,9 @@ class LoginProvider extends ChangeNotifier {
 
   void submitForm(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Profile()));
+      authService.logIn(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim());
     } else {
       print("Login failed...");
     }

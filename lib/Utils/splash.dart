@@ -12,7 +12,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     Future.delayed(const Duration(milliseconds: 800), () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Login()));
+          context, MaterialPageRoute(builder: (context) => const AuthGate()));
     });
     super.initState();
   }
