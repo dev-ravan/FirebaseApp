@@ -26,8 +26,10 @@ class AuthFireServices {
   // Sign up method
   signUp({required String email, required String password}) {
     try {
-      firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) => myWidgets.toastMsg(
+              msg: "User created successfully!", color: Palette.primary));
     } on FirebaseAuthException catch (e) {
       myWidgets.toastMsg(msg: e.code);
     }

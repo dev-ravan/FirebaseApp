@@ -6,8 +6,10 @@ class LoginProvider extends ChangeNotifier {
   // Global form key
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  // Text Editing Controllers
+  // Loading
+  bool isLoading = false;
 
+  // Text Editing Controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -42,15 +44,22 @@ class LoginProvider extends ChangeNotifier {
           ? "Password should at least 6 digits"
           : null;
 
+  // It changes the loading state
+  setLoading(bool loading) async {
+    isLoading = loading;
+    notifyListeners();
+  }
+
   // Submit the login form
 
   void submitForm(BuildContext context) {
     if (formKey.currentState!.validate()) {
+      setLoading(true);
       authService.logIn(
           email: emailController.text.trim(),
           password: passwordController.text.trim());
-    } else {
-      print("Login failed...");
+      setLoading(false);
+      resetForm();
     }
   }
 

@@ -73,6 +73,7 @@ class SignUpProvider extends ChangeNotifier {
           email: emailController.text.trim(),
           password: confirmPasswordController.text.trim());
       resetForm();
+      Navigator.pop(context);
       setLoading(false);
     }
     notifyListeners();
